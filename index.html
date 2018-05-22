@@ -49,7 +49,43 @@
             {lat: 31.415950, lng: 74.176701 },
             {lat: 31.415950, lng: 74.176523 }
         ];
-
+        
+        var plot13c = [
+            {lat: 31.416425, lng: 74.174800 },
+            {lat: 31.416425, lng: 74.175090 },
+            {lat: 31.416275, lng: 74.175090 },
+            {lat: 31.416275, lng: 74.174800 }
+        ];
+        var plot14c = [
+            {lat: 31.416575, lng: 74.174800 },
+            {lat: 31.416575, lng: 74.175090 },
+            {lat: 31.416425, lng: 74.175090},
+            {lat: 31.416425, lng: 74.174800}
+        ];
+        var plot15c = [
+            {lat: 31.416725, lng: 74.174800 },
+            {lat: 31.416725, lng: 74.175090 },
+            {lat: 31.416575, lng: 74.175090},
+            {lat: 31.416575, lng: 74.174800}
+        ];
+        var plot16c = [
+            {lat: 31.416875, lng: 74.174800 },
+            {lat: 31.416875, lng: 74.175090 },
+            {lat: 31.416725, lng: 74.175090},
+            {lat: 31.416725, lng: 74.174800}
+        ];
+        var plot17c = [
+            {lat: 31.417025, lng: 74.174800 },
+            {lat: 31.417025, lng: 74.175090 },
+            {lat: 31.416875, lng: 74.175090},
+            {lat: 31.416875, lng: 74.174800}
+        ];
+        var plot18c = [
+            {lat: 31.417175, lng: 74.174800 },
+            {lat: 31.417175, lng: 74.175090 },
+            {lat: 31.417025, lng: 74.175090},
+            {lat: 31.417025, lng: 74.174800}
+        ];
         // Construct the polygon.
         var plot1 = new google.maps.Polygon({
           paths: plot1c,
@@ -71,9 +107,72 @@
         });
         plot2.setMap(map);
 
+        var plot13 = new google.maps.Polygon({
+          paths: plot13c,
+          strokeColor: '#FF0000',
+          strokeOpacity: 0.8,
+          strokeWeight: 3,
+          fillColor: '#FF0000',
+          fillOpacity: 0.35
+        });
+        plot13.setMap(map);
+        var plot14 = new google.maps.Polygon({
+          paths: plot14c,
+          strokeColor: '#FF0000',
+          strokeOpacity: 0.8,
+          strokeWeight: 3,
+          fillColor: '#FF0000',
+          fillOpacity: 0.35
+        });
+        plot14.setMap(map);
+        var plot15 = new google.maps.Polygon({
+          paths: plot15c,
+          strokeColor: '#FF0000',
+          strokeOpacity: 0.8,
+          strokeWeight: 3,
+          fillColor: '#FF0000',
+          fillOpacity: 0.35
+        });
+        plot15.setMap(map);
+        var plot16 = new google.maps.Polygon({
+          paths: plot16c,
+          strokeColor: '#FF0000',
+          strokeOpacity: 0.8,
+          strokeWeight: 3,
+          fillColor: '#FF0000',
+          fillOpacity: 0.35
+        });
+        plot16.setMap(map);
+        var plot17 = new google.maps.Polygon({
+          paths: plot17c,
+          strokeColor: '#FF0000',
+          strokeOpacity: 0.8,
+          strokeWeight: 3,
+          fillColor: '#FF0000',
+          fillOpacity: 0.35
+        });
+        plot17.setMap(map);
+        var plot18 = new google.maps.Polygon({
+          paths: plot18c,
+          strokeColor: '#FF0000',
+          strokeOpacity: 0.8,
+          strokeWeight: 3,
+          fillColor: '#FF0000',
+          fillOpacity: 0.35
+        });
+        plot18.setMap(map);
+        
         // Add a listener for the click event.
         plot1.addListener('click', showArrays);
         plot2.addListener('click', showArrays);
+        plot13.addListener('click', showArrays);
+        plot14.addListener('click', showArrays);
+        plot15.addListener('click', showArrays);
+        plot16.addListener('click', showArrays);
+        plot17.addListener('click', showArrays);
+        plot18.addListener('click', showArrays);
+
+
 
         infoWindow = new google.maps.InfoWindow;
       }
