@@ -16,9 +16,31 @@
         margin: 0;
         padding: 0;
       }
+      #overlay {
+          position: fixed; /* Sit on top of the page content */
+          display: none; /* Hidden by default */
+          width: 100%; /* Full width (cover the whole page) */
+          height: 100%; /* Full height (cover the whole page) */
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          background-color: rgba(0,0,0,0.5); /* Black background with opacity */
+          z-index: 2; /* Specify a stack order in case you're using a different order for other elements */
+          cursor: pointer; /* Add a pointer on hover */
+      }
     </style>
   </head>
-  <body>
+  <body onload="on()">
+    <div id="overlay" onclick="off()" align="center" style="color:white;">
+      <h1>Izmir Society Digital Topographic Map</h1>
+      <p>In this map C Block of Izmir Society is shown.<br>
+        On clicking a certain landmark you will be able to see its postion by logitude and latitude. It will also display the elevation of landmark from sea level in meters.
+      </p>
+      <p>
+        NOTE: This digital topographic map is genererated by using GIS and Google Maps JavaScript APIs. Elevation is calculated by Google Elevation API.
+      </p>
+    </div> 
     <div id="map"></div>
     <script>
 
@@ -31,8 +53,8 @@
 
       function initMap() {
         map = new google.maps.Map(document.getElementById('map'), {
-          zoom: 15,
-          center: {lat:  31.416216, lng: 74.176929 },
+          zoom: 18,
+          center: {lat: 31.416287, lng: 74.176006 },
           mapTypeId: 'terrain'
         });
 
@@ -284,13 +306,13 @@
             {lat: 31.416405, lng: 74.176100 },
             {lat: 31.416265, lng: 74.176100},
             {lat: 31.416265, lng: 74.176400}
-        ];/*
-        var plot42c = [
-            {lat: 31.417175, lng: 74.174800 },
-            {lat: 31.417175, lng: 74.175090 },
-            {lat: 31.417025, lng: 74.175090},
-            {lat: 31.417025, lng: 74.174800}
         ];
+        var parkc = [
+            {lat: 31.416804, lng: 74.176011 },
+            {lat: 31.416811, lng: 74.175177 },
+            {lat: 31.416294, lng: 74.175161 },
+            {lat: 31.416287, lng: 74.176006 }
+        ];/*
         var plot43c = [
             {lat: 31.417175, lng: 74.174800 },
             {lat: 31.417175, lng: 74.175090 },
@@ -366,9 +388,11 @@
         */
         // Construct the polygon.
         var plot1 = new google.maps.Polygon({
+          content: "Plot 1",
+          elev: 206.8,
           paths: plot1c,
           strokeColor: '#FF0000',
-          strokeOpacity: 0.8,
+          strokeOpacity: 0.5,
           strokeWeight: 3,
           fillColor: '#FF0000',
           fillOpacity: 0.35
@@ -376,9 +400,11 @@
         plot1.setMap(map);
         
         var plot2 = new google.maps.Polygon({
+          content: "Plot 2",
+          elev: 206.5,
           paths: plot2c,
           strokeColor: '#FF0000',
-          strokeOpacity: 0.8,
+          strokeOpacity: 0.5,
           strokeWeight: 3,
           fillColor: '#FF0000',
           fillOpacity: 0.35
@@ -386,9 +412,11 @@
         plot2.setMap(map);
 
         var plot3 = new google.maps.Polygon({
+          content: "Plot 3",
+          elev: 206.2,
           paths: plot3c,
           strokeColor: '#FF0000',
-          strokeOpacity: 0.8,
+          strokeOpacity: 0.5,
           strokeWeight: 3,
           fillColor: '#FF0000',
           fillOpacity: 0.35
@@ -396,19 +424,23 @@
         plot3.setMap(map);
 
         var plot4 = new google.maps.Polygon({
+          content: "House 4",
+          elev: 205.9,
           paths: plot4c,
-          strokeColor: '#FF0000',
-          strokeOpacity: 0.8,
+          strokeColor: '#0000FF',
+          strokeOpacity: 0.5,
           strokeWeight: 3,
-          fillColor: '#FF0000',
+          fillColor: '#0000FF',
           fillOpacity: 0.35
         });
         plot4.setMap(map);
 
         var plot5 = new google.maps.Polygon({
+          content: "Plot 5",
+          elev: 205.7,
           paths: plot5c,
           strokeColor: '#FF0000',
-          strokeOpacity: 0.8,
+          strokeOpacity: 0.5,
           strokeWeight: 3,
           fillColor: '#FF0000',
           fillOpacity: 0.35
@@ -416,9 +448,11 @@
         plot5.setMap(map);
 
         var plot6 = new google.maps.Polygon({
+          content: "Plot 6",
+          elev: 205.4,
           paths: plot6c,
           strokeColor: '#FF0000',
-          strokeOpacity: 0.8,
+          strokeOpacity: 0.5,
           strokeWeight: 3,
           fillColor: '#FF0000',
           fillOpacity: 0.35
@@ -426,19 +460,23 @@
         plot6.setMap(map);
 
         var plot7 = new google.maps.Polygon({
+          content: "House 7",
+          elev: 205.2,
           paths: plot7c,
-          strokeColor: '#FF0000',
-          strokeOpacity: 0.8,
+          strokeColor: '#0000FF',
+          strokeOpacity: 0.5,
           strokeWeight: 3,
-          fillColor: '#FF0000',
+          fillColor: '#0000FF',
           fillOpacity: 0.35
         });
         plot7.setMap(map);
 
         var plot8 = new google.maps.Polygon({
+          content: "Plot 8",
+          elev: 204.8,
           paths: plot8c,
           strokeColor: '#FF0000',
-          strokeOpacity: 0.8,
+          strokeOpacity: 0.5,
           strokeWeight: 3,
           fillColor: '#FF0000',
           fillOpacity: 0.35
@@ -446,9 +484,11 @@
         plot8.setMap(map);
 
         var plot9 = new google.maps.Polygon({
+          content: "Plot 9",
+          elev: 204.3,
           paths: plot9c,
           strokeColor: '#FF0000',
-          strokeOpacity: 0.8,
+          strokeOpacity: 0.5,
           strokeWeight: 3,
           fillColor: '#FF0000',
           fillOpacity: 0.35
@@ -456,9 +496,11 @@
         plot9.setMap(map);
 
         var plot10 = new google.maps.Polygon({
+          content: "Plot 10",
+          elev: 203.3,
           paths: plot10c,
           strokeColor: '#FF0000',
-          strokeOpacity: 0.8,
+          strokeOpacity: 0.5,
           strokeWeight: 3,
           fillColor: '#FF0000',
           fillOpacity: 0.35
@@ -466,19 +508,23 @@
         plot10.setMap(map);
 
         var plot11 = new google.maps.Polygon({
+          content: "House 11",
+          elev: 203.3,
           paths: plot11c,
-          strokeColor: '#FF0000',
-          strokeOpacity: 0.8,
+          strokeColor: '#0000FF',
+          strokeOpacity: 0.5,
           strokeWeight: 3,
-          fillColor: '#FF0000',
+          fillColor: '#0000FF',
           fillOpacity: 0.35
         });
         plot11.setMap(map);
 
         var plot12 = new google.maps.Polygon({
+          content: "Plot 12",
+          elev: 203.1,
           paths: plot12c,
           strokeColor: '#FF0000',
-          strokeOpacity: 0.8,
+          strokeOpacity: 0.5,
           strokeWeight: 3,
           fillColor: '#FF0000',
           fillOpacity: 0.35
@@ -486,9 +532,11 @@
         plot12.setMap(map);
 
         var plot13 = new google.maps.Polygon({
+          content: "Plot 13",
+          elev: 203.5,
           paths: plot13c,
           strokeColor: '#FF0000',
-          strokeOpacity: 0.8,
+          strokeOpacity: 0.5,
           strokeWeight: 3,
           fillColor: '#FF0000',
           fillOpacity: 0.35
@@ -496,47 +544,57 @@
         
         plot13.setMap(map);
         var plot14 = new google.maps.Polygon({
+          content: "House 14",
+          elev: 203.7,
           paths: plot14c,
-          strokeColor: '#FF0000',
-          strokeOpacity: 0.8,
+          strokeColor: '#0000FF',
+          strokeOpacity: 0.5,
           strokeWeight: 3,
-          fillColor: '#FF0000',
+          fillColor: '#0000FF',
           fillOpacity: 0.35
         });
         plot14.setMap(map);
         var plot15 = new google.maps.Polygon({
+          content: "Plot 15",
+          elev: 203.9,
           paths: plot15c,
           strokeColor: '#FF0000',
-          strokeOpacity: 0.8,
+          strokeOpacity: 0.5,
           strokeWeight: 3,
           fillColor: '#FF0000',
           fillOpacity: 0.35
         });
         plot15.setMap(map);
         var plot16 = new google.maps.Polygon({
+          content: "Plot 16",
+          elev: 204.2,
           paths: plot16c,
           strokeColor: '#FF0000',
-          strokeOpacity: 0.8,
+          strokeOpacity: 0.5,
           strokeWeight: 3,
           fillColor: '#FF0000',
           fillOpacity: 0.35
         });
         plot16.setMap(map);
         var plot17 = new google.maps.Polygon({
+          content: "House 17",
+          elev: 204.8,
           paths: plot17c,
-          strokeColor: '#FF0000',
-          strokeOpacity: 0.8,
+          strokeColor: '#0000FF',
+          strokeOpacity: 0.5,
           strokeWeight: 3,
-          fillColor: '#FF0000',
+          fillColor: '#0000FF',
           fillOpacity: 0.35
         });
         plot17.setMap(map);
         var plot18 = new google.maps.Polygon({
+          content: "House 18",
+          elev: 205.5,
           paths: plot18c,
-          strokeColor: '#FF0000',
-          strokeOpacity: 0.8,
+          strokeColor: '#0000FF',
+          strokeOpacity: 0.5,
           strokeWeight: 3,
-          fillColor: '#FF0000',
+          fillColor: '#0000FF',
           fillOpacity: 0.35
         });
         plot18.setMap(map);
@@ -551,99 +609,121 @@
         
         plot19.setMap(map);*/
         var plot20 = new google.maps.Polygon({
+          content: "House 20",
+          elev: 205.4,
           paths: plot20c,
-          strokeColor: '#FF0000',
-          strokeOpacity: 0.8,
+          strokeColor: '#0000FF',
+          strokeOpacity: 0.5,
           strokeWeight: 3,
-          fillColor: '#FF0000',
+          fillColor: '#0000FF',
           fillOpacity: 0.35
         });
         plot20.setMap(map);
         var plot21 = new google.maps.Polygon({
+          content: "Plot 21",
+          elev: 205.6,
           paths: plot21c,
           strokeColor: '#FF0000',
-          strokeOpacity: 0.8,
+          strokeOpacity: 0.5,
           strokeWeight: 3,
           fillColor: '#FF0000',
           fillOpacity: 0.35
         });
         plot21.setMap(map);
         var plot22 = new google.maps.Polygon({
+          content: "Plot 22",
+          elev: 205.8,
           paths: plot22c,
           strokeColor: '#FF0000',
-          strokeOpacity: 0.8,
+          strokeOpacity: 0.5,
           strokeWeight: 3,
           fillColor: '#FF0000',
           fillOpacity: 0.35
         });
         plot22.setMap(map);
         var plot23 = new google.maps.Polygon({
+          content: "Plot 23",
+          elev: 206.3,
           paths: plot23c,
           strokeColor: '#FF0000',
-          strokeOpacity: 0.8,
+          strokeOpacity: 0.5,
           strokeWeight: 3,
           fillColor: '#FF0000',
           fillOpacity: 0.35
         });
         plot23.setMap(map);
         var plot24 = new google.maps.Polygon({
+          content: "House 24",
+          elev: 206.8,
           paths: plot24c,
-          strokeColor: '#FF0000',
-          strokeOpacity: 0.8,
+          strokeColor: '#0000FF',
+          strokeOpacity: 0.5,
           strokeWeight: 3,
-          fillColor: '#FF0000',
+          fillColor: '#0000FF',
           fillOpacity: 0.35
         });
         plot24.setMap(map);
         var plot25 = new google.maps.Polygon({
+          content: "Plot 25",
+          elev: 206.5,
           paths: plot25c,
           strokeColor: '#FF0000',
-          strokeOpacity: 0.8,
+          strokeOpacity: 0.5,
           strokeWeight: 3,
           fillColor: '#FF0000',
           fillOpacity: 0.35
         });
         plot25.setMap(map);
         var plot26 = new google.maps.Polygon({
+          content: "Plot 26",
+          elev: 206.7,
           paths: plot26c,
           strokeColor: '#FF0000',
-          strokeOpacity: 0.8,
+          strokeOpacity: 0.5,
           strokeWeight: 3,
           fillColor: '#FF0000',
           fillOpacity: 0.35
         });
         plot26.setMap(map);
         var plot27 = new google.maps.Polygon({
+          content: "Plot 27",
+          elev: 206.9,
           paths: plot27c,
           strokeColor: '#FF0000',
-          strokeOpacity: 0.8,
+          strokeOpacity: 0.5,
           strokeWeight: 3,
           fillColor: '#FF0000',
           fillOpacity: 0.35
         });
         plot27.setMap(map);
         var plot28 = new google.maps.Polygon({
+          content: "Plot 28",
+          elev: 206.8,
           paths: plot28c,
           strokeColor: '#FF0000',
-          strokeOpacity: 0.8,
+          strokeOpacity: 0.5,
           strokeWeight: 3,
           fillColor: '#FF0000',
           fillOpacity: 0.35
         });
         plot28.setMap(map);
         var plot29 = new google.maps.Polygon({
+          content: "Plot 29",
+          elev: 206.8,
           paths: plot29c,
           strokeColor: '#FF0000',
-          strokeOpacity: 0.8,
+          strokeOpacity: 0.5,
           strokeWeight: 3,
           fillColor: '#FF0000',
           fillOpacity: 0.35
         });
         plot29.setMap(map);
         var plot30 = new google.maps.Polygon({
+          content: "Plot 30",
+          elev: 206.8,
           paths: plot30c,
           strokeColor: '#FF0000',
-          strokeOpacity: 0.8,
+          strokeOpacity: 0.5,
           strokeWeight: 3,
           fillColor: '#FF0000',
           fillOpacity: 0.35
@@ -659,104 +739,126 @@
         });
         plot31.setMap(map);*/
         var plot32 = new google.maps.Polygon({
+          content: "Plot 32",
+          elev: 206.7,
           paths: plot32c,
           strokeColor: '#FF0000',
-          strokeOpacity: 0.8,
+          strokeOpacity: 0.5,
           strokeWeight: 3,
           fillColor: '#FF0000',
           fillOpacity: 0.35
         });
         plot32.setMap(map);
         var plot33 = new google.maps.Polygon({
+          content: "House 33",
+          elev: 206.3,
           paths: plot33c,
-          strokeColor: '#FF0000',
-          strokeOpacity: 0.8,
+          strokeColor: '#0000FF',
+          strokeOpacity: 0.5,
           strokeWeight: 3,
-          fillColor: '#FF0000',
+          fillColor: '#0000FF',
           fillOpacity: 0.35
         });
         plot33.setMap(map);
         var plot34 = new google.maps.Polygon({
+          content: "Plot 34",
+          elev: 207.2,
           paths: plot34c,
           strokeColor: '#FF0000',
-          strokeOpacity: 0.8,
+          strokeOpacity: 0.5,
           strokeWeight: 3,
           fillColor: '#FF0000',
           fillOpacity: 0.35
         });
         plot34.setMap(map);
         var plot35 = new google.maps.Polygon({
+          content: "Plot 35",
+          elev: 207.4,
           paths: plot35c,
           strokeColor: '#FF0000',
-          strokeOpacity: 0.8,
+          strokeOpacity: 0.5,
           strokeWeight: 3,
           fillColor: '#FF0000',
           fillOpacity: 0.35
         });
         plot35.setMap(map);
         var plot36 = new google.maps.Polygon({
+          content: "Plot 36",
+          elev: 207.6,
           paths: plot36c,
           strokeColor: '#FF0000',
-          strokeOpacity: 0.8,
+          strokeOpacity: 0.5,
           strokeWeight: 3,
           fillColor: '#FF0000',
           fillOpacity: 0.35
         });
         plot36.setMap(map);
         var plot37 = new google.maps.Polygon({
+          content: "Plot 37",
+          elev: 207.8,
           paths: plot37c,
           strokeColor: '#FF0000',
-          strokeOpacity: 0.8,
+          strokeOpacity: 0.5,
           strokeWeight: 3,
           fillColor: '#FF0000',
           fillOpacity: 0.35
         });
         plot37.setMap(map);
         var plot38 = new google.maps.Polygon({
+          content: "Plot 38",
+          elev: 208.0,
           paths: plot38c,
           strokeColor: '#FF0000',
-          strokeOpacity: 0.8,
+          strokeOpacity: 0.5,
           strokeWeight: 3,
           fillColor: '#FF0000',
           fillOpacity: 0.35
         });
         plot38.setMap(map);
         var plot39 = new google.maps.Polygon({
+          content: "Plot 39",
+          elev: 207.5,
           paths: plot39c,
           strokeColor: '#FF0000',
-          strokeOpacity: 0.8,
+          strokeOpacity: 0.5,
           strokeWeight: 3,
           fillColor: '#FF0000',
           fillOpacity: 0.35
         });
         plot39.setMap(map);
         var plot40 = new google.maps.Polygon({
+          content: "Plot 40",
+          elev: 207.1,
           paths: plot40c,
           strokeColor: '#FF0000',
-          strokeOpacity: 0.8,
+          strokeOpacity: 0.5,
           strokeWeight: 3,
           fillColor: '#FF0000',
           fillOpacity: 0.35
         });
         plot40.setMap(map);
         var plot41 = new google.maps.Polygon({
+          content: "Plot 41",
+          elev: 206.7,
           paths: plot41c,
           strokeColor: '#FF0000',
-          strokeOpacity: 0.8,
+          strokeOpacity: 0.5,
           strokeWeight: 3,
           fillColor: '#FF0000',
           fillOpacity: 0.35
         });
-        plot41.setMap(map);/*
-        var plot42 = new google.maps.Polygon({
-          paths: plot42c,
-          strokeColor: '#FF0000',
+        plot41.setMap(map);
+        var park = new google.maps.Polygon({
+          content: "C Block Park",
+          elev: 205.0,
+          paths: parkc,
+          strokeColor: '#00FF00',
           strokeOpacity: 0.8,
           strokeWeight: 3,
-          fillColor: '#FF0000',
+          fillColor: '#00FF00',
           fillOpacity: 0.35
         });
-        plot42.setMap(map);
+        park.setMap(map);/*
         var plot43 = new google.maps.Polygon({
           paths: plot43c,
           strokeColor: '#FF0000',
@@ -870,12 +972,46 @@
         // Add a listener for the click event.
         plot1.addListener('click', showArrays);
         plot2.addListener('click', showArrays);
+        plot3.addListener('click', showArrays);
+        plot4.addListener('click', showArrays);
+        plot5.addListener('click', showArrays);
+        plot6.addListener('click', showArrays);
+        plot7.addListener('click', showArrays);
+        plot8.addListener('click', showArrays);
+        plot9.addListener('click', showArrays);
+        plot10.addListener('click', showArrays);
+        plot11.addListener('click', showArrays);
+        plot12.addListener('click', showArrays);
         plot13.addListener('click', showArrays);
         plot14.addListener('click', showArrays);
         plot15.addListener('click', showArrays);
         plot16.addListener('click', showArrays);
         plot17.addListener('click', showArrays);
         plot18.addListener('click', showArrays);
+        //plot19.addListener('click', showArrays);
+        plot20.addListener('click', showArrays);
+        plot21.addListener('click', showArrays);
+        plot22.addListener('click', showArrays);
+        plot23.addListener('click', showArrays);
+        plot24.addListener('click', showArrays);
+        plot25.addListener('click', showArrays);
+        plot26.addListener('click', showArrays);
+        plot27.addListener('click', showArrays);
+        plot28.addListener('click', showArrays);
+        plot29.addListener('click', showArrays);
+        plot30.addListener('click', showArrays);
+        //plot31.addListener('click', showArrays);
+        plot32.addListener('click', showArrays);
+        plot33.addListener('click', showArrays);
+        plot34.addListener('click', showArrays);
+        plot35.addListener('click', showArrays);
+        plot36.addListener('click', showArrays);
+        plot37.addListener('click', showArrays);
+        plot38.addListener('click', showArrays);
+        plot39.addListener('click', showArrays);
+        plot40.addListener('click', showArrays);
+        plot41.addListener('click', showArrays);
+        park.addListener('click', showArrays);
 
 
 
@@ -887,24 +1023,32 @@
         // Since this polygon has only one path, we can call getPath() to return the
         // MVCArray of LatLngs.
         var vertices = this.getPath();
-
-        var contentString = '<b>Bermuda Triangle polygon</b><br>' +
-            'Clicked location: <br>' + event.latLng.lat() + ',' + event.latLng.lng() +
-            '<br>';
-
         // Iterate over the vertices.
+        var sumLat=0,sumLng=0;
         for (var i =0; i < vertices.getLength(); i++) {
           var xy = vertices.getAt(i);
-          contentString += '<br>' + 'Coordinate ' + i + ':<br>' + xy.lat() + ',' +
-              xy.lng();
+          sumLat=sumLat+xy.lat();
+          sumLng=sumLng+xy.lng();
         }
+        var pLat=sumLat/4;
+        var pLng=sumLng/4;
+        var contentString = '<b>'+this.content+'</b><br>' +
+            'Location: <br>' + pLat + ',' + pLng +
+            '<br>Elevation: '+this.elev+' meters';
 
         // Replace the info window's content and position.
         infoWindow.setContent(contentString);
-        infoWindow.setPosition(event.latLng);
+        infoWindow.setPosition({lat:pLat,lng:pLng});
 
         infoWindow.open(map);
       }
+      function on() {
+          document.getElementById("overlay").style.display = "block";
+      }
+
+      function off() {
+          document.getElementById("overlay").style.display = "none";
+      } 
     </script>
     <script async defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCrCmqvdEtkiSKDM_i26gLCEIRY6qYKmjc&callback=initMap">
